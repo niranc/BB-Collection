@@ -15,4 +15,12 @@ dns1.dtd
 dns2.dtd
 ```
 
+## activeenum_ua
+### What
+Actively scan dns, grab webservers, open ports, crawl websites and launch xray and dalfox
+### When
+After dns enum :)
+### How
+```  ```
+
 
