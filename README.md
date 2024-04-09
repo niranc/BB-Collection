@@ -25,11 +25,21 @@ After dns enum :)
 
 ## fuzzeractive.sh
 ### What
-Fuzzeractive is a script using ffuf on steroids for a complete webservers.txt file (yes) - It parallelizes a ffuf using up to 9 threads and saves the results. The final script allows sorting and keeping only the interesting results.
+Fuzzeractive is a script using ffuf on steroids for a complete webservers.txt file (yes) - It parallelizes a ffuf using up to 9 threads and saves (all) the results. The final script allows sorting and keeping only the interesting results.
 ### When
 When you have a webserver.txt file
 ### How
 ``` ./fuzzeractive.sh ./webservers.txt "UserAgent: yeswehack" ```
+
+## filter_fuzzeractive.sh
+### What
+Read fuzzeractive.sh output and extract the rarest endpoints
+### When
+Launch it after previous script - need fuff_http outputs
+### How
+``` ./filterfuffresult.sh ```
+
+# Good luck!
 
 
 
