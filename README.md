@@ -23,5 +23,13 @@ After dns enum :)
 ### How
 ``` ./activeenum_ua.sh file_dns.txt "User-Agent: yeswehack"```
 
+## fuzzeractive.sh
+### What
+Fuzzeractive is a script using ffuf on steroids for a complete webservers.txt file (yes) - It parallelizes a ffuf using up to 9 threads and saves the results. The final script allows sorting and keeping only the interesting results.
+### When
+When you have a webserver.txt file
+### How
+``` ./fuzzeractive.sh ./webservers.txt "UserAgent: yeswehack" ```
+
 
 
