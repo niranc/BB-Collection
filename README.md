@@ -37,7 +37,7 @@ Read fuzzeractive.sh output and extract the rarest endpoints
 ### When
 Launch it after previous script - need fuff_http outputs
 ### How
-``` ./filterfuffresult.sh ```
+``` ./filter_fuzzeractive.sh ```
 
 # Good luck!
 
