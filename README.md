@@ -21,6 +21,7 @@ Actively scan dns, grab webservers, open ports, crawl websites and launch xray a
 ### When
 After dns enum :)
 ### How
-```  ```
+``` ./activeenum_ua.sh file_dns.txt "User-Agent: yeswehack"```
+
 
 
