@@ -1,0 +1,10 @@
+# Paste thos into console in order to grab endpoints from js files
+```
+(()=>{const r=/\/[a-zA-Z0-9_\-\/\.?=#&%]+/g,s=new Set(),v=new Set(),n=3,u=(e,d)=>{if(d>n||v.has(e))return;v.add(e);fetch(e).then(r=>r.text()).then(t=>{[...t.matchAll(r)].forEach(m=>{let p=m[0];if(p.length>1&&p.length<500){s.add(p);let f=new URL(p,location.origin).href;if(f.endsWith(".js"))u(f,d+1)}})}).catch(()=>{})},d=()=>{document.querySelectorAll("script[src]").forEach(t=>u(t.src,0))},a=()=>{[...document.documentElement.outerHTML.matchAll(r)].forEach(m=>s.add(m[0]))},o=()=>{let div=document.createElement("div");div.style.cssText="position:fixed;top:0;left:0;width:100%;max-height:50vh;overflow:auto;background:#111;color:#0f0;padding:1em;font-family:monospace;z-index:999999;font-size:14px;border-bottom:2px solid #0f0";div.innerHTML="<b>Endpoints trouvés :</b><br><br>"+[...s].sort().map(e=>`<div>${e}</div>`).join("");document.body.appendChild(div)};a();d();setTimeout(o,5000);})();
+```
+
+and
+
+```
+javascript:(function(){var regex=/(?<=(\"|\%27|\`))\/[a-zA-Z0-9_?&=\/\-\#\.]*(?=(\"|\'|\%60))/g;const results=new Set();function fetchAndProcess(url,depth){if(depth>3)return;fetch(url).then(response=>response.text()).then(scriptContent=>{var matches=scriptContent.matchAll(regex);for(let match of matches){let scriptUrl=match[0];results.add(scriptUrl);if(scriptUrl.startsWith("/")){scriptUrl=window.location.origin+scriptUrl;}fetchAndProcess(scriptUrl,depth+1);}}).catch(error=>{console.log("An error occurred while fetching script:",error);});}function processScripts(){var scripts=document.getElementsByTagName("script");for(var i=0;i<scripts.length;i++){var src=scripts[i].src;if(src){fetchAndProcess(src,0);}}}function processPageContent(){var pageContent=document.documentElement.outerHTML;var matches=pageContent.matchAll(regex);for(const match of matches){let scriptUrl=match[0];results.add(scriptUrl);if(scriptUrl.startsWith("/")){scriptUrl=window.location.origin+scriptUrl;}fetchAndProcess(scriptUrl,0);}}function writeResults(){results.forEach(result=>{document.write(result+"<br>");});}processScripts();processPageContent();setTimeout(writeResults,5000);})();
+```
